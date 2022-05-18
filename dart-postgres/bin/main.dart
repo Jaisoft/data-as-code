@@ -3,13 +3,6 @@ import 'dart:convert';
 
 import 'package:postgres/postgres.dart';
 
-//////////////////////////////////////////
-
-
-
-
-
-
 void main(List<String> arguments) async {
   final conn = PostgreSQLConnection(
     'localhost',
@@ -18,22 +11,25 @@ void main(List<String> arguments) async {
     username: 'postgres',
     password: 'password',
   );
-  await conn.open();
+  
+    await conn.open();
 
-  print('Connected to Postgres database...');
+    print('Connected to Postgres database...');
 
-  // NOTE Do this as part of DB setup not in application code!
-  // await conn.query('''
-  // CREATE TABLE customers(
-  //   id serial primary key not null,
-  //   name text,
-  //   email text,
-  //   address text,
-  //   country text
-  // )
-  // ''');
+    await conn.close();
 
-  // Create data
+   // NOTE Do this as part of DB setup not in application code!
+  /*await conn.query('''
+    CREATE TABLE customers(
+      id serial primary key not null,
+      name text,
+      email text,
+      address text,
+      country text)
+
+    ''');
+
+ // Create data
   await conn.query('''
     INSERT INTO customers (name,email,address,country)
     VALUES ('Jermaine Oppong','jermaine@oppong.co','1212 Some Street','United Kingdom')
@@ -54,6 +50,9 @@ void main(List<String> arguments) async {
     ===
     ''');
   }
+
+ 
+
 
   // Update data
   await conn.query("UPDATE customers SET country='Ghana' WHERE id=1");
@@ -125,7 +124,7 @@ void main(List<String> arguments) async {
     Order Id: ${row['orders']['order_id']}
     ===
     ''');
-  }
+  }*/
 
-  await conn.close();
+  
 }
