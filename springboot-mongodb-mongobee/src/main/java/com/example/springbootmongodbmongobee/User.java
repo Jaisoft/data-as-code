@@ -7,15 +7,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class User {
 
     @Id
-    private long userId;
+    private String userId;
 
     private String userName;
 
-    public long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
     
